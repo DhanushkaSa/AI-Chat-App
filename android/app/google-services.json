@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "703738987370",
+    "project_id": "chatapp-3615b",
+    "storage_bucket": "chatapp-3615b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703738987370:android:1e56f0be39fe55a03e1b13",
+        "android_client_info": {
+          "package_name": "com.zyntexait.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703738987370-4ri9ei9agbfukl9smkt4c3naekoe5ail.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zyntexait.chatapp",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "703738987370-6albbnfem5jper4ga3i3d6r4kjd0kn8o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbHpTXONLfqvwOfVph33DvWrFk6opuShU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "703738987370-6albbnfem5jper4ga3i3d6r4kjd0kn8o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
