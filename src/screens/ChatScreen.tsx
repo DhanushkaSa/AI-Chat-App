@@ -1,4 +1,4 @@
-import { FlatList, KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native'
+import { Button, FlatList, KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import AppHeader from '../components/AppHeader'
 import SendMessageCard from '../components/SendMessageCard';
@@ -7,6 +7,8 @@ import { s } from 'react-native-size-matters';
 import { RECEIVED, SENT } from '../constants/chat';
 import ChatInput from '../components/ChatInput';
 import EmptyChat from '../components/EmptyChat';
+import { useKeyboardState } from '../hooks/UseKeyboardState';
+import { getHuggingFaceResponse } from '../api/http-requests';
 
 interface MessageProps {
   id: number,
@@ -15,29 +17,13 @@ interface MessageProps {
 }
 const ChatScreen = () => {
 
-  const messageList: MessageProps[] = [
-    {
-      message: "Hello",
-      id: 1,
-      type: SENT
-    },
 
-    {
-      message: "Hi, How can I help you today?",
-      id: 2,
-      type: RECEIVED
-    },
-
-    {
-      message: "Tell me about react native.",
-      id: 3,
-      type: SENT
-    }
-  ]
 
   const [messagesData, setMessagesData] = useState<MessageProps[]>([])
   const [msgInput, setMsgInput] = useState("")
   const flatListRef = useRef<FlatList>(null)
+  const { isKeyboardVisible, keyboardHight } = useKeyboardState();
+  const [isLoading, setIsLoading] = useState(false);
 
   console.log("MSG All : ", messagesData);
 
@@ -47,9 +33,12 @@ const ChatScreen = () => {
     }
   }
 
+
+
+
   useEffect(() => {
     scrollToBottom()
-  }, [messagesData])
+  }, [messagesData, isKeyboardVisible])
 
 
   const onMessageSent = () => {
@@ -69,8 +58,14 @@ const ChatScreen = () => {
     )
 
     setTimeout(() => {
-      onGetResponse("Hello, I'm AI assistant. How can I help you today?")
-    }, 2000)
+      // onGetResponse("Hello, I'm AI assistant. How can I help you today?")
+      setIsLoading(true)
+      getHuggingFaceResponse(msgInput).then((response) => {
+
+        onGetResponse(response)
+        setIsLoading(false)
+      })
+    }, 40)
   }
 
   const onGetResponse = (response: string) => {
@@ -96,6 +91,8 @@ const ChatScreen = () => {
         <AppHeader />
 
 
+
+
         <FlatList
           ref={flatListRef}
           data={messagesData}
@@ -112,6 +109,11 @@ const ChatScreen = () => {
           onContentSizeChange={scrollToBottom}
 
         />
+
+        <View style={{ paddingHorizontal: s(8) }}>
+          {isLoading && <ResponseMessageCard message={"Thinking... Thinking..."} />}
+
+        </View>
 
         <ChatInput
           messageValue={msgInput}

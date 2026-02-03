@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.white,
         borderTopWidth: 1,
         borderTopColor: colors.mediumGray,
-        marginBottom: vs(30)
+
     },
     input: {
         flex: 1,
