@@ -27,13 +27,13 @@ const App = () => {
 
 
   return (
-    <View>
-      <ChatScreen />
+
+    <ChatScreen />
 
 
 
 
-    </View>
+
   )
 }
 

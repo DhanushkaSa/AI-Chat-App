@@ -6,8 +6,8 @@ import { s } from 'react-native-size-matters'
 const AppHeader = () => {
   return (
     <View style={styles.appHeader}>
-      <AppIcon height={s(50)} width={s(50)} style={styles.icon}/>
-      
+      <AppIcon height={s(40)} width={s(40)} style={styles.icon} />
+
     </View>
   )
 }
@@ -15,13 +15,13 @@ const AppHeader = () => {
 export default AppHeader
 
 const styles = StyleSheet.create({
-    appHeader: {
-        backgroundColor: 'black',
-        padding: 20,
-    },
+  appHeader: {
+    backgroundColor: 'black',
+    padding: 20,
+  },
 
-    icon:{
-        alignSelf:'center',
-        marginTop: 25,
-    }
+  icon: {
+    alignSelf: 'center',
+    marginTop: 25,
+  }
 })
